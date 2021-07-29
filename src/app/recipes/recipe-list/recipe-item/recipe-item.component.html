@@ -1,4 +1,7 @@
-<a href="#" (click)="onClick()" class="d-flex list-group-item list-group-item-action">
+<a 
+    [routerLink]="[recipe.id]" 
+    routerLinkActive="active" 
+    class="d-flex pointer list-group-item list-group-item-action">
     <div class="row">
         <div class="col-3 recipe__image">
             <img 
