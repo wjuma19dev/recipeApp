@@ -1,1 +1,14 @@
-<p>recipe-item works!</p>
+<a href="#" (click)="onClick()" class="d-flex list-group-item list-group-item-action">
+    <div class="row">
+        <div class="col-3 recipe__image">
+            <img 
+                class="rounded" 
+                [src]="['./assets/'+recipe.imageUrl]" 
+                alt="{{recipe.name}}">
+        </div>
+        <div class="col-9 recipe__meta">
+            <h4 class="m-0">{{recipe.name}}</h4>
+            <p class="m-0">{{recipe.description}}</p>
+        </div>
+    </div>
+</a>

@@ -1,27 +1,32 @@
-<div class="row">
+<div class="row detail">
 
-    <div class="col-12 mt-3">
-        <img src="./assets/beans.jpg" alt="">
+    <div class="col-12 mt-3 detail__image">
+        <img [src]="'./assets/'+recipe.imageUrl" [alt]="recipe.name">
     </div>
     <div class="col-12 my-2">
-        <h3 class="m-0">Recipe name</h3>
+        <h3 class="m-0">{{recipe.name}}</h3>
     </div>
     <div class="col-12">
-        <div class="dropdown">
+        <div appDropdown class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Manage Recipe
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">To shopping list</a></li>
+              <li><a (click)="onAddToShoppingList()" class="dropdown-item" href="#">To shopping list</a></li>
               <li><a class="dropdown-item" href="#">Edit recipe</a></li>
               <li><a class="dropdown-item" href="#">Delete recipe</a></li>
             </ul>
         </div>
     </div>
     <div class="col-12 mt-2">
-        <p class="m-0">Recipe description</p>
+        <p class="m-0">{{recipe.description}}</p>
     </div>
     <div class="col-12 mt-2">
-        <p class="m-0">Recipe ingredients</p>
+        <h5>Ingredientes</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
+                {{ingredient.name}} - DOP {{ingredient.amount}}
+            </li>
+        </ul>
     </div>
 </div>
