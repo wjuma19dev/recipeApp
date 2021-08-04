@@ -1,0 +1,49 @@
+<div class="row">
+
+    <div class="col-sm-8 col-md-5 offset-sm-2 offset-md-3 p-0 mt-5" *ngIf="error">
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            {{error}}
+        </div>
+    </div>
+    <div [class]="error ? 'mt-3 card col-sm-8 col-md-5 offset-sm-2 offset-md-3' : 'mt-5 card col-sm-8 col-md-5 offset-sm-2 offset-md-3'">
+
+        <form #authForm="ngForm" class="card-body" (ngSubmit)="onSubmit(authForm)">
+            <fieldset>
+                <legend>{{ isRegisterActive ? 'Registro de usuario' : 'Inicio de sesión' }}</legend>
+            
+                <div class="mb-3">
+                    <label for="email">Correo electrónico</label>
+                    <input 
+                        type="email" 
+                        class="form-control"
+                        ngModel
+                        name="email"
+                        required
+                        email>
+                </div>
+                <div class="mb-3">
+                    <label for="password">Contraseña</label>
+                    <input 
+                        type="password" 
+                        class="form-control"
+                        ngModel
+                        name="password"
+                        required
+                        min="6">
+                </div>
+                <div class="form-group">
+                    <button [disabled]="!authForm.valid" class="btn btn-primary" type="submit" disabled>
+                        <span *ngIf="isLoading" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        {{ isRegisterActive ? 'Registrarte' : 'Inicia sesión'}}
+                    </button>
+                    <span class="mx-2">|</span>
+                    <button class="btn btn-light" (click)="onSwitchAuthMode()" type="button">
+                        <i class="bi bi-signpost-2"></i>
+                        Cambiar a {{ isRegisterActive ? 'Inicia sesión' : 'Registrarte' }}</button>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+</div>

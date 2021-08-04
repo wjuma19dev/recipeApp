@@ -6,10 +6,4 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class RecipesComponent  {
-
-  recipeLoaded: Recipe;
-
-  constructor() {}
-
-}
+export class RecipesComponent {}

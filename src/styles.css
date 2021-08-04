@@ -11,9 +11,12 @@
 }
 
 
-.detail__image img {
-    height: 300px;
+img {
     width: 100%;
+}
+
+.detail img {
+    height: 350px;
 }
 
 .pointer {

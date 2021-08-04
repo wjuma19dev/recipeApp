@@ -3,9 +3,9 @@
         <button [routerLink]="['new']" class="btn btn-primary">New Recipe</button>
     </div>
 </div>
-<hr>
+
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 mt-3">
         <div class="list-group list-group-flush mb-3">
             <app-recipe-item [recipe]="recipe"  *ngFor="let recipe of recipes"></app-recipe-item>
         </div>

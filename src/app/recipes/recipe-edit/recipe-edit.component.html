@@ -1,1 +1,78 @@
-<p>recipe-edit works!</p>
+<div class="row">
+    <div class="col-12 mt-3">
+        <div class="btn-group">
+            <button 
+                [disabled]="!recipeForm.valid" 
+                (click)="onSubmit()"
+                class="btn btn-success">Save</button>
+            <button class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+    </div>
+
+    <form class="row" [formGroup]="recipeForm" > 
+        <div [class]=" !recipeForm.get('name').valid && recipeForm.get('name').touched ? 'col-12 my-3 has-danger' : recipeForm.get('name').valid ? 'col-12 my-3 has-valid' : 'col-12 my-3'">
+            <label for="name">Name</label>
+            <input 
+                formControlName="name" 
+                type="text" 
+                name="name"
+                autocomplete="off" 
+                [class]=" !recipeForm.get('name').valid && recipeForm.get('name').touched ? 'form-control is-invalid' : recipeForm.get('name').valid ? 'form-control is-valid' : 'form-control' ">
+            <div *ngIf="!recipeForm.get('name').valid && recipeForm.get('name').touched" class="text-danger">*Este campo es obligatorio</div>
+        </div>
+        <div [class]=" !recipeForm.get('imageUrl').valid && recipeForm.get('imageUrl').touched ? 'col-12 my-3 has-danger' : recipeForm.get('imageUrl').valid ? 'col-12 my-3 has-valid' : 'col-12 my-3'">
+            <label for="imageUrl">Imagen Url</label>
+            <input 
+                formControlName="imageUrl" 
+                type="text" 
+                name="imageUrl" 
+                #imageUrl
+                [class]=" !recipeForm.get('imageUrl').valid && recipeForm.get('imageUrl').touched ? 'form-control is-invalid' : recipeForm.get('imageUrl').valid ? 'form-control is-valid' : 'form-control' ">
+                <div *ngIf="!recipeForm.get('imageUrl').valid && recipeForm.get('imageUrl').touched" class="text-danger">*Este campo es obligatorio</div>
+        </div>
+        <div *ngIf="imageUrl.value" class="col-12 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <img [src]="'./assets/'+imageUrl.value" alt="">
+                </div>
+            </div>
+        </div>
+        <div [class]=" !recipeForm.get('description').valid && recipeForm.get('description').touched ? 'col-12 my-3 has-danger' : recipeForm.get('description').valid ? 'col-12 mb-3 has-valid' : 'col-12 mb-3'">
+            <label for="name">Name</label>
+            <textarea 
+                formControlName="description" 
+                type="text" 
+                rows="6" 
+                [class]=" !recipeForm.get('description').valid && recipeForm.get('description').touched ? 'form-control is-invalid' : recipeForm.get('description').valid ? 'form-control is-valid' : 'form-control' "></textarea>
+                <div *ngIf="!recipeForm.get('description').valid && recipeForm.get('description').touched" class="text-danger">*Este campo es obligatorio</div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12" formArrayName="ingredients">
+                    <div 
+                        class="row mb-1" 
+                        *ngFor="let ingredientCtrl of controls; let i = index"
+                        [formGroupName]="i">
+
+                        <div class="col-7">
+                            <input formControlName="name" type="text" class="form-control">
+                        </div>
+                        <div class="col-3">
+                            <input formControlName="amount" type="number" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <button (click)="onRemoveIngredient(i)" class="btn btn-danger">X</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-12 mt-2">
+                    <button class="btn btn-success" (click)="onAddIngredient()">Add Ingredient</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
