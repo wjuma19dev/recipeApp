@@ -7,3 +7,10 @@ export interface AuthResponseData {
     localId: string;
     registered?: boolean;
 }
+
+export interface loadedUser {
+    email: string,
+    id: string;
+    _token: string;
+    _tokenExpirationDate: Date
+}

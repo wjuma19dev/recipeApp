@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthResponseData } from './auth.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -16,10 +17,12 @@ export class AuthComponent implements OnInit {
   public isLoading: boolean = false;
   public error: string = null;
 
-  constructor(private _authService: AuthService) { }
+  constructor(
+    private _authService: AuthService,
+    private _router: Router
+  ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSwitchAuthMode() {
     this.isRegisterActive = !this.isRegisterActive;
@@ -48,7 +51,8 @@ export class AuthComponent implements OnInit {
 
     authObs.subscribe(responseData => {
       this.isLoading = false;
-      console.log(responseData);
+      console.log(responseData); // { displayName, email, expiresIn, idToken, kind, localId, refreshToken ,registered }
+      this._router.navigate(['/recipes']);
     }, errorMessage => {
       this.isLoading = false;
       console.log(errorMessage);
