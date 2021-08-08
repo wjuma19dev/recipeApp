@@ -1,8 +1,8 @@
-<div class="backdrop"></div>
+<div class="backdrop" (click)="onClose()"></div>
 <div class="alertBox">
 
     <p class="alertBox__message"> {{message}} </p>   
     <div class="alertBox__actions">
-        <button class="btn btn-info">Close</button>
+        <button class="btn btn-info" (click)="onClose()">Close</button>
     </div>  
 </div>

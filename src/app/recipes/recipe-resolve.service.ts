@@ -14,7 +14,6 @@ export class RecipeResolveService implements Resolve<Recipe[]> {
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-        // SEGUN MAZ ESTE CODIGO ES PARA EVITAR ERRORES ERAROS PERO NO ME FUNCIONA
         const recipes = this._recipeService.fetchAll;
 
         if(recipes.length === 0) {
@@ -22,8 +21,6 @@ export class RecipeResolveService implements Resolve<Recipe[]> {
         } else {
             return recipes;
         }
-
-        // return this._storageDataService.fetchStorageData();
 
     }
 

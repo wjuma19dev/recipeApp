@@ -1,3 +1,4 @@
+<ng-template appPlaceholder></ng-template>
 <div class="row">
 
     <!-- <div class="col-sm-8 col-md-5 offset-sm-2 offset-md-3 p-0 mt-5" *ngIf="error">
@@ -6,7 +7,7 @@
             {{error}}
         </div>
     </div> -->
-    <app-alert *ngIf="error" [message]="error"></app-alert>
+    <app-alert *ngIf="error" [message]="error" (close)="handlerErrorAlert()"></app-alert>
     <div [class]="error ? 'mt-3 card col-sm-8 col-md-5 offset-sm-2 offset-md-3' : 'mt-5 card col-sm-8 col-md-5 offset-sm-2 offset-md-3'">
 
         <form #authForm="ngForm" class="card-body" (ngSubmit)="onSubmit(authForm)">
